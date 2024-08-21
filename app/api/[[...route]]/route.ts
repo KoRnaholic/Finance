@@ -3,43 +3,28 @@ import { handle } from "hono/vercel";
 import { z } from "zod";
 import { zValidator } from "@hono/zod-validator";
 import { clerkMiddleware, getAuth } from "@hono/clerk-auth";
-
+import accounts from "./accounts";
 export const runtime = "edge";
 
 const app = new Hono().basePath("/api");
 
-app
-  .get("/hello", clerkMiddleware(), (c) => {
-    const auth = getAuth(c);
+app.get("/hello", clerkMiddleware(), (c) => {
+  const auth = getAuth(c);
 
-    console.log(c);
-
-    if (!auth?.userId) {
-      return c.json({
-        error: "You are not logged in.",
-      });
-    }
+  if (!auth?.userId) {
     return c.json({
-      message: "Hello Next.js!",
-      userId: auth.userId,
+      error: "You are not logged in.",
     });
-  })
-  .get(
-    "/hello/:test",
-    zValidator(
-      "param",
-      z.object({
-        test: z.string(),
-      })
-    ),
-    (c) => {
-      const { test } = c.req.valid("param");
-      return c.json({
-        message: "Hello Next.js!",
-        test: test,
-      });
-    }
-  );
+  }
+  return c.json({
+    message: "Hello Next.js!",
+    userId: auth.userId,
+  });
+});
+
+const routes = app.route("/accounts", accounts);
 
 export const GET = handle(app);
 export const POST = handle(app);
+
+export type AppType = typeof routes;
