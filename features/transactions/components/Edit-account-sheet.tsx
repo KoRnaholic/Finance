@@ -9,12 +9,12 @@ import { useNewAccount } from "../hooks/Use-new-account";
 import AccountForm from "./Account-form";
 import { insertAccountSchema } from "@/db/schema";
 import { z } from "zod";
-import { useCreateAccount } from "../api/use-create-account";
+import { useCreateAccount } from "../api/use-create-transaction";
 import { useOpenAccount } from "../hooks/Use-open-account";
-import { useGetAccount } from "../api/use-get-account";
+import { useGetAccount } from "../api/use-get-transaction";
 import { Loader2 } from "lucide-react";
-import { useEditAccount } from "../api/use-edit-account";
-import { useDeleteAccount } from "../api/use-delete-account";
+import { useEditAccount } from "../api/use-edit-transaction";
+import { useDeleteAccount } from "../api/use-delete-transaction";
 import useConfirm from "@/hooks/use-confirm";
 
 const formSchema = insertAccountSchema.pick({
