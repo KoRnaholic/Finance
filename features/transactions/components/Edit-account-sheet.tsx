@@ -5,7 +5,7 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
-import { useNewAccount } from "../hooks/Use-new-account";
+import { useNewAccount } from "../hooks/Use-new-transaction";
 import AccountForm from "./Account-form";
 import { insertAccountSchema } from "@/db/schema";
 import { z } from "zod";
