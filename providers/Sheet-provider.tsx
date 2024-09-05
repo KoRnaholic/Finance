@@ -7,6 +7,7 @@ import NewCategorySheet from "@/features/categories/components/New-category-shee
 import EditCategorySheet from "@/features/categories/components/Edit-category-sheet";
 import { useMountedState } from "react-use";
 import NewTransactionSheet from "@/features/transactions/components/New-transaction-sheet";
+import EditTransactionSheet from "@/features/transactions/components/Edit-transaction-sheet";
 
 export default function SheetProvider() {
   const isMounted = useMountedState();
@@ -21,6 +22,7 @@ export default function SheetProvider() {
       <EditCategorySheet />
 
       <NewTransactionSheet />
+      <EditTransactionSheet />
     </>
   );
 }
