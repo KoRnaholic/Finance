@@ -7,6 +7,7 @@ import {
   ResponsiveContainer,
   CartesianGrid,
 } from "recharts";
+import CustomTooltip from "./CustomTooltip";
 
 type Props = {
   data?: {
@@ -41,12 +42,14 @@ export default function AreaVariant({ data }: Props) {
           tickMargin={16}
         />
 
+        <Tooltip content={<CustomTooltip />} />
+
         <Area
           type="monotone"
           dataKey="income"
           stackId="income"
           strokeWidth={2}
-          stroke="#3d82f6"
+          stroke="#3b82f6"
           fill="url(#income)"
           className="drop-shadow-sm"
         />
